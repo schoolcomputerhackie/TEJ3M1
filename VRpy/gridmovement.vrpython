@@ -1,0 +1,127 @@
+#region VEXcode Generated Robot Configuration
+import math
+import random
+from vexcode_vr import *
+
+# Brain should be defined by default
+brain=Brain()
+
+drivetrain = Drivetrain("drivetrain", 0)
+pen = Pen("pen", 8)
+pen.set_pen_width(THIN)
+left_bumper = Bumper("leftBumper", 2)
+right_bumper = Bumper("rightBumper", 3)
+front_eye = EyeSensor("frontEye", 4)
+down_eye = EyeSensor("downEye", 5)
+front_distance = Distance("frontdistance", 6)
+distance = front_distance
+magnet = Electromagnet("magnet", 7)
+location = Location("location", 9)
+
+#endregion VEXcode Generated Robot Configuration
+#region VEXcode Generated Robot Configuration
+import math
+import random
+
+grid = 240
+
+def mRight():
+    global grid
+
+    if drivetrain.rotation(DEGREES) == 90:
+        drivetrain.drive_for(FORWARD, grid, MM)
+    elif drivetrain.rotation(DEGREES) == 0:
+        drivetrain.turn_for(RIGHT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 180:
+        drivetrain.turn_for(RIGHT, 180, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 270 or drivetrain.rotation(DEGREES) == -90:
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+
+def mLeft():
+    global grid
+
+    if drivetrain.rotation(DEGREES) == 180: # if the car is facing down
+        drivetrain.turn_for(RIGHT, 90, DEGREES) # turn right so you're facing to the left
+        drivetrain.drive_for(FORWARD, grid, MM)
+    elif drivetrain.rotation(DEGREES) == 0:
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 90:
+        drivetrain.turn_for(RIGHT, 180, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 270 or drivetrain.rotation(DEGREES) == -90:
+        drivetrain.drive_for(FORWARD,grid,MM)
+
+def mUp():
+    global grid
+
+    if drivetrain.rotation(DEGREES) == 180: # if the car is facing down
+        drivetrain.turn_for(RIGHT, 180, DEGREES) # turn right so you're facing up
+        drivetrain.drive_for(FORWARD, grid, MM)
+    elif drivetrain.rotation(DEGREES) == 0:
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 90:
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 270 or drivetrain.rotation(DEGREES) == -90:
+        drivetrain.turn_for(RIGHT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+
+def mDown():
+    global grid
+
+    if drivetrain.rotation(DEGREES) == 180: # if the car is facing down
+        drivetrain.drive_for(FORWARD, grid, MM)
+    elif drivetrain.rotation(DEGREES) == 0:
+        drivetrain.turn_for(RIGHT, 180, DEGREES) # turn right so you're facing up
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 90:
+        drivetrain.turn_for(RIGHT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+    elif drivetrain.rotation(DEGREES) == 270 or drivetrain.rotation(DEGREES) == -90:
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD,grid,MM)
+
+def m(Direction, tiles = None):
+    if tiles == None:
+        tiles = 1
+    if Direction == 'L':
+        v = 1
+        while True:
+            mLeft()
+            if v == tiles:
+                break
+            v += 1
+    elif Direction == 'R':
+        v = 1
+        while True:
+            mRight()
+            if v == tiles:
+                break
+            v += 1
+    elif Direction == 'U':
+        v = 1
+        while True:
+            mUp()
+            if v == tiles:
+                break
+            v += 1
+    elif Direction == 'D':
+        v = 1
+        while True:
+            mDown()
+            if v == tiles:
+                break
+            v += 1
+
+def main():
+    m('U')
+    m('L')
+    m('U')
+    m('L')
+    m('D', 2)
+
+vr_thread(main)
