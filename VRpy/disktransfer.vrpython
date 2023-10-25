@@ -1,0 +1,186 @@
+#region VEXcode Generated Robot Configuration
+import math
+import random
+from vexcode_vr import *
+
+# Brain should be defined by default
+brain=Brain()
+
+drivetrain = Drivetrain("drivetrain", 0)
+pen = Pen("pen", 8)
+pen.set_pen_width(THIN)
+left_bumper = Bumper("leftBumper", 2)
+right_bumper = Bumper("rightBumper", 3)
+front_eye = EyeSensor("frontEye", 4)
+down_eye = EyeSensor("downEye", 5)
+front_distance = Distance("frontdistance", 6)
+distance = front_distance
+magnet = Electromagnet("magnet", 7)
+location = Location("location", 9)
+
+#endregion VEXcode Generated Robot Configuration
+#region VEXcode Generated Robot Configuration
+
+def color(color): #go to the specified color
+    if color == 'red':
+        magnet.energize(DROP)
+    if color == 'blue':
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD, 800, MM)
+        magnet.energize(DROP)
+        drivetrain.drive_for(REVERSE, 800, MM)
+        drivetrain.turn_for(RIGHT, 90, DEGREES)
+    if color == 'green':
+        drivetrain.turn_for(RIGHT, 90, DEGREES)
+        drivetrain.drive_for(FORWARD, 800, MM)
+        magnet.energize(DROP)
+        drivetrain.drive_for(REVERSE, 800, MM)
+        drivetrain.turn_for(LEFT, 90, DEGREES)
+        
+def main():
+    drivetrain.drive_for(FORWARD,700,MM) # move forward
+    drivetrain.turn_for(LEFT, 90, DEGREES) #turn towars the blue disk
+    drivetrain.drive_for(FORWARD,250,MM) 
+    magnet.energize(BOOST) # pick up the disk
+    drivetrain.drive_for(REVERSE,250,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,700,MM)
+
+    color('blue')
+    
+    drivetrain.drive_for(FORWARD,700,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,450,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,450,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,700,MM)
+
+    color('blue')
+
+    drivetrain.drive_for(FORWARD,700,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,250,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,250,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,700,MM)
+
+    color('green')
+
+    drivetrain.drive_for(FORWARD,700,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,450,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,450,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,700,MM)
+
+    color('green')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,450,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,450,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('blue')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,450,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,450,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('red')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,500,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,200,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,200,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,500,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('red')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,500,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,400,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,400,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,500,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+    
+    color('green')
+    # repeat for the other side
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,500,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,200,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,200,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,500,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('blue')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,500,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,400,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,400,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,500,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+    
+    color('red')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,300,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,400,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,400,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,300,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('red')
+
+    drivetrain.drive_for(FORWARD,900,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,300,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(FORWARD,400,MM)
+    magnet.energize(BOOST)
+    drivetrain.drive_for(REVERSE,400,MM)
+    drivetrain.turn_for(LEFT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,300,MM)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    drivetrain.drive_for(REVERSE,900,MM)
+
+    color('green')
+
+vr_thread(main)
