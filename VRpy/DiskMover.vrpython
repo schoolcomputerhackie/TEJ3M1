@@ -1,0 +1,87 @@
+#region VEXcode Generated Robot Configuration
+import math
+import random
+from vexcode_vr import *
+
+# Brain should be defined by default
+brain=Brain()
+
+drivetrain = Drivetrain("drivetrain", 0)
+pen = Pen("pen", 8)
+pen.set_pen_width(THIN)
+left_bumper = Bumper("leftBumper", 2)
+right_bumper = Bumper("rightBumper", 3)
+front_eye = EyeSensor("frontEye", 4)
+down_eye = EyeSensor("downEye", 5)
+front_distance = Distance("frontdistance", 6)
+distance = front_distance
+magnet = Electromagnet("magnet", 7)
+location = Location("location", 9)
+
+#endregion VEXcode Generated Robot Configuration
+# ------------------------------------------
+# 
+# 	Project:      VEXcode Project
+#	Author:       VEX
+#	Created:
+#	Description:  VEXcode VR Python Project
+# 
+# ------------------------------------------
+
+# Add project code in "main"
+
+diskcoordmatrix = [
+    [[4,0],[6,0],[8,0]],
+    [[4,4],[6,4],[8,4]],
+    [[4,8],[6,8],[8,8]]
+]
+
+diskcolormatrix = [
+    ['b','b','b'],
+    ['r','r','r'],
+    ['g','g','g']
+]
+
+def print(value):
+    brain.new_line()
+    brain.print(value)
+
+def doinstructions():
+    for i in diskcoordmatrix:
+        for j in i:
+            if j[1] == 0:
+                print('works')
+                drivetrain.drive_for(FORWARD, j[0]*200, MM)
+            elif j[1] > 0:
+                drivetrain.turn_for(RIGHT,90,DEGREES)
+                drivetrain.drive_for(FORWARD,j[1]*200,MM)
+                drivetrain.turn_for(LEFT,90,DEGREES)
+                drivetrain.drive_for(FORWARD,j[0]*200,MM)
+            drivetrain.stop()
+
+            print("Test one")
+
+            magnet.energize(BOOST)
+
+            print("Test two")
+
+            wait(500,MSEC)
+
+            drivetrain.drive_for(REVERSE,j[0]*200,MM)
+
+            wait(500,MSEC)
+            print('Test three')
+            magnet.energize(DROP)
+            if j[1] == 0:
+                pass
+            else:
+                drivetrain.turn_for(LEFT,90,DEGREES)
+                drivetrain.drive_for(FORWARD,j[1]*200,MM)
+                drivetrain.turn_for(RIGHT,90,DEGREES)
+                
+def main():
+    brain.clear()
+    doinstructions()
+
+# VR threads — Do not delete
+vr_thread(main)
