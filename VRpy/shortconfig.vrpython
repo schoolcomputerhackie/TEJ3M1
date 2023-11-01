@@ -1,0 +1,2 @@
+import math;import random;from vexcode_vr import *;brain=Brain();drivetrain = Drivetrain("drivetrain", 0);pen = Pen("pen", 8);pen.set_pen_width(THIN);left_bumper = Bumper("leftBumper", 2);right_bumper = Bumper("rightBumper", 3);front_eye = EyeSensor("frontEye", 4);down_eye = EyeSensor("downEye", 5);front_distance = Distance("frontdistance", 6);distance = front_distance;magnet = Electromagnet("magnet", 7);location = Location("location", 9)
+### A short configuration file used in VEXcode VR Python.
