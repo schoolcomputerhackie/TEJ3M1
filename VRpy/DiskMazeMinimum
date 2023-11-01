@@ -1,0 +1,20 @@
+import math;import random;from vexcode_vr import *;brain=Brain();drivetrain = Drivetrain("drivetrain", 0);pen = Pen("pen", 8);pen.set_pen_width(THIN);left_bumper = Bumper("leftBumper", 2);right_bumper = Bumper("rightBumper", 3);front_eye = EyeSensor("frontEye", 4);down_eye = EyeSensor("downEye", 5);front_distance = Distance("frontdistance", 6);distance = front_distance;magnet = Electromagnet("magnet", 7);location = Location("location", 9);direction = NONE
+def main(): 
+    while down_eye.detect(RED) == False:
+        while down_eye.detect(NONE):
+            wait(5, MSEC);drivetrain.drive(FORWARD)
+        direction = RIGHT if down_eye.detect(GREEN) else LEFT 
+        if not down_eye.detect(RED): drivetrain.turn_for(direction,90,DEGREES)
+    drivetrain.stop()        
+vr_thread(main)
+
+
+
+
+
+
+
+
+
+
+
