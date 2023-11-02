@@ -1,0 +1,64 @@
+
+import math;import random;from vexcode_vr import *;brain=Brain();drivetrain = Drivetrain("drivetrain", 0);pen = Pen("pen", 8);pen.set_pen_width(THIN);left_bumper = Bumper("leftBumper", 2);right_bumper = Bumper("rightBumper", 3);front_eye = EyeSensor("frontEye", 4);down_eye = EyeSensor("downEye", 5);front_distance = Distance("frontdistance", 6);distance = front_distance;magnet = Electromagnet("magnet", 7);location = Location("location", 9)
+### A short configuration file used in VEXcode VR Python.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def print(value):
+    brain.new_line()
+    brain.print(value)
+
+currentposition = [
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,1,0,0,0]
+]
+
+def checkcurrentstate():
+    v1 = 0
+    v2 = 0
+    v3 = 0
+    v4 = 0
+    v1 = front_distance.get_distance(MM)
+    print(v1)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    v2 = front_distance.get_distance(MM)
+    print(v2)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    v3 = front_distance.get_distance(MM)
+    print(v3)
+    drivetrain.turn_for(RIGHT, 90, DEGREES)
+    v4 = front_distance.get_distance(MM)
+    print(v4)
+    v1 = 1 if v1 <= 65 else 0
+    v2 = 1 if v2 <= 65 else 0
+    v3 = 1 if v3 <= 65 else 0
+    v4 = 1 if v4 <= 65 else 0
+    return [v1,v2,v3,v4]
+
+def main():
+    print(checkcurrentstate())
+
+
+vr_thread(main)
