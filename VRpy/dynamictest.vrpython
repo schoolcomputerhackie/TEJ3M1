@@ -163,6 +163,23 @@ def main():
             m('l')
         currentmaze[currentpos[0]][currentpos[1]] = [1,1,1,1]
         value2 = checkotherwalls()
-        checkcurrentstate(value2)
+        value3 = checkcurrentstate(value2)
+
+        print(value3)
+
+        count1 = 0
+
+        for i in value3:
+            if i == 1:
+                count1 += 1
+        if count1 == 3:
+            if value3[0] == 0:
+                m('u')
+            if value3[1] == 0:
+                m('r')
+            if value3[2] == 0:
+                m('d')
+            if value3[3] == 0:
+                m('l')
 
 vr_thread(main)
