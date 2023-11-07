@@ -1,3 +1,4 @@
+// Finished
 void da(char* dirorstraight, int l, int s, bool ua)
 {
 	if (dirorstraight	== "f") {
@@ -41,9 +42,9 @@ task main()
 	da("r",90,50,true);
 	da("f",3500,50,false);
 	da("l",90,50,true);
-	da("f",2000,50,false);
-	da("l",45,50,true);
-	da("f",1000,50,false);
+	da("f",2500,50,false);
+	da("l",90,50,true);
+	da("f",4500,50,false);
 	da("r",90,50,true);
 	da("f",3000,50,false);
 }
