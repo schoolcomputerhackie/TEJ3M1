@@ -20,7 +20,7 @@ void da(char* dirorstraight, int l, int s, bool ua)
 	}
 	
 	if (ua == true) {
-		delay((7.12) * l);
+		delay((7.25) * l);
 	}
 	
 	else if (ua == false) {
@@ -30,10 +30,11 @@ void da(char* dirorstraight, int l, int s, bool ua)
 
 task main()
 {
-	int i;
-	
-	for (i=0;i<8;i++){
-		da("f",4500,50,false);
-		da("r",90,50,true);
-	}
+	da("f",4500,50,false);
+	da("l",90,50,true);
+	da("f",4000,50,false);
+	da("r",90,50,true);
+	da("f",3200,50,false);
+	da("r",90,50,true);
+	da("f",1500,50,false);
 }
