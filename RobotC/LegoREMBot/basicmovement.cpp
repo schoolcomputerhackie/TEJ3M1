@@ -18,7 +18,7 @@ void da(char* dirorstraight, int l, int s, bool ua) //Do Action Specified
 	}
 
 	if (ua == true) { // If i specify to change duration to the angle to turn at, then
-		delay((14.08 * (((s-50)*-1)+50)/100)*l); // Angle Script
+		delay((16.45 * (((s-50)*-1)+50)/100)*l); // Angle Script
 	}
 
 	else if (ua == false) { // If I dont specify to convert duration to angle
