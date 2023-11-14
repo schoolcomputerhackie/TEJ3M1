@@ -18,12 +18,15 @@ void da(char* dirorstraight, int l, int s, bool ua) //Do Action Specified
 	}
 
 	if (ua == true) { // If i specify to change duration to the angle to turn at, then
-		delay((7.6 * (((s-50)*-1)+50)/100)*l); // Angle Script
+		delay((7.55 * (((s-50)*-1)+50)/100)*l); // Angle Script
 	}
 
 	else if (ua == false) { // If I dont specify to convert duration to angle
 		delay(l); // Wait duration
 	}
+	motor(motorB) = 0;
+	motor(motorC) = 0;
+	delay(200);
 }
 
 /*
