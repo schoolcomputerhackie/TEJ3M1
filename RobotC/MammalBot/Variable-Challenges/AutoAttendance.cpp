@@ -6,7 +6,7 @@
 
 void da(char* dirorstraight, int l, int s, bool ua) //Do Action Specified
 {
-	if (dirorstraight	== "f") { // If it wants to go straight
+	if (dirorstraight == "f") { // If it wants to go straight
 		motor(motorB) = s;
 		motor(motorC) = s;
 	}
